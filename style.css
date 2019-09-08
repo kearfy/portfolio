@@ -1,5 +1,5 @@
 html, body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vh;
     background: linear-gradient(8deg, #000, #f00)
 }
