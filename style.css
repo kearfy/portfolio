@@ -9,7 +9,7 @@
 html, body {
     height: 100%;
     width: 100%;
-    background: linear-gradient(8deg, #000, #42e3d9)
+    background: linear-gradient(8deg, #e5e5e5, #42e3d9)
 }
 
 div.navbar {
