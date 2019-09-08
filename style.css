@@ -107,5 +107,14 @@ body {
     background-image: url('/clouds_sea.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+}
+
+section.landing {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40%;
 }
