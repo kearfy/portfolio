@@ -18,7 +18,7 @@ div.navbar {
     width: 100%;
     font-family: 'Livvic', sans-serif;
     z-index: 999;
-    background-color: white;
+    position: fixed;
 }
 
 div.navbar .brand {
@@ -101,4 +101,8 @@ div.navbar .links a:visited {
     div.navbar #toggle:checked + .links {
         height: 300px;
     }
+}
+
+body {
+    background-image: url('/clouds_sea.jpg');
 }
