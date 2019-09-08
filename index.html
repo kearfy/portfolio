@@ -8,8 +8,25 @@
         <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-        <div class="side">
+        <div class="navbar">
+            <a href="#" class="brand">Micha de Vries</a>
 
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle">
+
+            <div class="links">
+                <a href="/signout" class="authenticated desktop"><i class="fa fa-sign-out"></i></a>
+                <a href="/signout" class="authenticated mobile">Sign out</a>
+                <a href="/dashboard" class="authenticated">Dashboard</a>
+
+                <a href="/signin" class="visitor desktop"><i class="fa fa-sign-in"></i></a>
+                <a href="/signin" class="visitor mobile">Sign in</a>
+                <a href="/signup" class="visitor">Sign up</a>
+
+                <a href="#">Contact</a>
+                <a href="#">About</a>
+                <a href="#">Solutions</a>
+            </div>
         </div>
         <div class="content">
             <section class="landing">

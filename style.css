@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Livvic|Montserrat|Quicksand|Raleway&display=swap');
+
 * {
     padding: 0px;
     margin: 0px;
@@ -7,28 +9,92 @@
 html, body {
     height: 100%;
     width: 100%;
-    background: linear-gradient(8deg, #000, #ff0000)
+    background: linear-gradient(8deg, #000, #42e3d9)
 }
 
-.side {
-    width: 50px;
-    height: 100%;
-    background-color: black;
+div.navbar {
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    font-family: 'Livvic', sans-serif;
+    z-index: 999;
+    background-color: white;
+}
+
+div.navbar .brand {
+    margin-left: 5%;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    float: left;
     display: inline-block;
+    width: 20%;
 }
 
-.content {
-    width: calc(100% - 50px);
-    height: 100%;
-    display: inline;
+div.navbar label {
+    margin-right: 10%;
+    font-size: 2rem;
+    display: none;
+    width: 2rem;
+    float: right;
 }
 
-@media only screen and (min-width: 768px) {
-    .side:hover {
-        width: 300px;
+div.navbar #toggle {
+    display: none;
+}
+
+div.navbar .links {
+    display: inline-block;
+    margin-right: 5%;
+    width: 70%;
+    transition: all 2s ease;
+}
+
+div.navbar .links a {
+    text-decoration: none;
+    color: black;
+    padding: 0 3%;
+    float: right;
+}
+
+div.navbar .links a:visited {
+    text-decoration: none;
+    color: black;
+    padding: 0 3%;
+    float: right;
+}
+
+@media (max-width: 768px) {
+    div.navbar label {
+        display: block;
+        cursor: pointer;
     }
 
-    .side:hover + .content {
-        width: calc(100% - 300px);
+    div.navbar .links {
+        width: 100%;
+        display: block;
+        float: none;
+        background-color: white;
+        padding: 0;
+        position: absolute;
+        top: 60px;
+        transition: all .5s ease;
+        height: 0px;
+        overflow: hidden;
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        z-index: 998;
+    }
+
+    div.navbar .links a {
+        display: block;
+        float: none;
+        margin-left: 10%;
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+    }
+
+    div.navbar #toggle:checked + .links {
+        height: 300px;
     }
 }
