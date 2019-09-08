@@ -65,7 +65,7 @@ div.navbar .links a:visited {
 }
 
 @media (max-width: 768px) {
-    div.brand {
+    div.navbar .brand {
         width: 70%;
     }
 
