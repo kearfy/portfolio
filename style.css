@@ -14,7 +14,7 @@ html, body {
     width: 50px;
     height: 100%;
     background-color: black;
-    display: inline;
+    display: inline-block;
 }
 
 .content {
