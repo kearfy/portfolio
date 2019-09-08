@@ -105,4 +105,7 @@ div.navbar .links a:visited {
 
 body {
     background-image: url('/clouds_sea.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
