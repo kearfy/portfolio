@@ -65,6 +65,10 @@ div.navbar .links a:visited {
 }
 
 @media (max-width: 768px) {
+    div.brand {
+        width: 70%;
+    }
+
     div.navbar label {
         display: block;
         cursor: pointer;
