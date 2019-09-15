@@ -13,6 +13,19 @@ html, body {
     background: linear-gradient(8deg, #e5e5e5, #42e3d9)
 }
 
+::-webkit-scrollbar {
+    width: 3px;
+}
+::-webkit-scrollbar-track {
+    background: #e5e5e5;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 div.navbar {
     height: 60px;
     line-height: 60px;
@@ -53,7 +66,7 @@ div.navbar .links {
 
 div.navbar .links a {
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 0 3%;
     float: right;
 }
@@ -66,6 +79,10 @@ div.navbar .links a:visited {
 }
 
 @media (max-width: 768px) {
+    div.navbar {
+        background-color: #e5e5e5;
+    }
+
     div.navbar .brand {
         width: 70%;
     }
@@ -79,7 +96,7 @@ div.navbar .links a:visited {
         width: 100%;
         display: block;
         float: none;
-        background-color: white;
+        background-color: #e5e5e5;
         padding: 0;
         position: absolute;
         top: 60px;
@@ -100,15 +117,16 @@ div.navbar .links a:visited {
     }
 
     div.navbar #toggle:checked + .links {
-        height: 300px;
+        height: 180px;
     }
 }
 
 body {
-    background-image: url('./clouds_sea.jpg');
+    background-image: url('https://images.wallpaperscraft.com/image/mountains_snow_summit_84607_1920x1200.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 section.landing {
@@ -117,23 +135,28 @@ section.landing {
     position: relative;
 }
 
-section.intro {
+section.landing .intro {
     width: 100%;
-    height: 100px
-}
-
-section.landing .bottombar {
-    width: 100%;
-    height: 50px;
-    position: absolute;
+    height: 100px;
+    text-align: center;
+    top: 0;
     bottom: 0;
-    background-color: #e5e5e5;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    margin: auto 0;
+    position: absolute;
 }
 
-section.landing .bottombar:hover {
-    height: 60px;
+section.landing .intro .title {
+    font-size: 55px;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+section.landing .intro .subtitle {
+    font-size: 23px;
+    color: white;
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
 }
 
 section.about {
