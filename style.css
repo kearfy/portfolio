@@ -100,7 +100,7 @@ div.navbar .links a:visited {
         padding: 0;
         position: absolute;
         top: 60px;
-        transition: all .5s ease;
+        transition: height .5s ease;
         height: 0px;
         overflow: hidden;
         -webkit-transform: scaleY(-1);
