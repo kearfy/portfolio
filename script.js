@@ -16,7 +16,7 @@ updatenav();
 
 mystem.auth.user(res => {
     if (res.success) {
-        document.querySelector('.name').innerHTML = res.info.fname + ' ' + res.info.lname;
+        document.querySelector('.name').innerHTML = res.user.fname + ' ' + res.user.lname;
     } else {
         console.error(res.error);
     }
