@@ -24,5 +24,5 @@ window.addEventListener('MystemSignIn', e => {
 })
 
 window.addEventListener('MystemSignOut', e => {
-    document.querySelector('p.name').innerHTML = u.fname + ' ' + u.lname;
+    document.querySelector('p.name').innerHTML = '';
 })
