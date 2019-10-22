@@ -13,3 +13,7 @@ function updatenav() {
 
 window.onscroll = (e) => { updatenav(); };
 updatenav();
+
+mystem.auth.user(res => {
+    console.log(res);
+})
