@@ -14,14 +14,15 @@ function updatenav() {
 window.onscroll = (e) => { updatenav(); };
 updatenav();
 
+
 window.addEventListener('MystemSignIn', e => {
     u = e.detail;
     if (u.success) {
         u = u.user;
-        document.querySelector('p.name').innerHTML(u.fname + ' ' + u.lname);
+        document.querySelector('p.name').innerHTML = u.fname + ' ' + u.lname;
     }
 })
 
 window.addEventListener('MystemSignOut', e => {
-    document.querySelector('p.name').innerHTML(u.fname + ' ' + u.lname);
+    document.querySelector('p.name').innerHTML = u.fname + ' ' + u.lname;
 })
