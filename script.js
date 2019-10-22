@@ -15,5 +15,9 @@ window.onscroll = (e) => { updatenav(); };
 updatenav();
 
 mystem.auth.user(res => {
-    console.log(res);
+    if (res.success) {
+        document.querySelector('.name').innerHTML = res.info.fname + ' ' + res.info.lname;
+    } else {
+        console.error(res.error);
+    }
 })
