@@ -14,10 +14,15 @@ function updatenav() {
 window.onscroll = (e) => { updatenav(); };
 updatenav();
 
-mystem.auth.user(res => {
-    if (res.success) {
-        document.querySelector('.name').innerHTML = res.user.fname + ' ' + res.user.lname;
-    } else {
-        console.error(res.error);
+
+window.addEventListener('MystemSignIn', e => {
+    u = e.detail;
+    if (u.success) {
+        u = u.user;
+        document.querySelector('p.name').innerHTML = u.fname + ' ' + u.lname;
     }
+})
+
+window.addEventListener('MystemSignOut', e => {
+    document.querySelector('p.name').innerHTML = '';
 })
