@@ -68,34 +68,78 @@
         </form>
     </body>
     <script type="text/javascript">
-        document.querySelector('form.ticket').addEventListener('submit', e => {
-            e.preventDefault();
+        function initForm() {
+            document.querySelector('form.ticket').addEventListener('submit', e => {
+                e.preventDefault();
 
-            if (e.target.querySelector('input[name=identifier]').value === '') {
-                alert('You must enter your name!');
-            } else {
-                fetch('https://mystem.nl/api/ticket/open', {
-                    method: "POST",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        apikey: e.target.querySelector('input[name=apikey]').value,
-                        room: 'Informatica',
-                        identifier: e.target.querySelector('input[name=identifier]').value
+                if (e.target.querySelector('input[name=identifier]').value === '') {
+                    alert('You must enter your name!');
+                } else {
+                    fetch('https://mystem.nl/api/ticket/open', {
+                        method: "POST",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            apikey: e.target.querySelector('input[name=apikey]').value,
+                            room: 'Informatica',
+                            identifier: e.target.querySelector('input[name=identifier]').value
+                        })
+                    }).then(res => res.json()).then(res => {
+                        if (res.success) {
+                            localStorage.setItem('ticket_uuid', res.ticket.uuid);
+                            localStorage.setItem('ticket_identifier', res.ticket.identifier);
+                            document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name <br> "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
+                        } else {
+                            alert('Server responded with error code: ' + res.error);
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                        alert('An error occured, please open the developer console to check');
                     })
-                }).then(res => res.json()).then(res => {
-                    if (res.success) {
-                        document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name <br> "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
-                    } else {
-                        alert('Server responded with error code: ' + res.error);
-                    }
-                }).catch(err => {
-                    console.log(err);
-                    alert('An error occured, please open the developer console to check');
+                }
+            })
+        }
+
+        function initFormBasic() {
+            document.querySelector('form.ticket').addEventListener('submit', e => {
+                e.preventDefault();
+                alert('To submit a new ticket, reload the page once the old one is closed.');
+            })
+        }
+
+        if (localStorage.getItem('uuid') !== null) {
+            fetch('https://mystem.nl/api/ticket/exists', {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    apikey: document.querySelector('form.ticket input[name=apikey]').value,
+                    room: 'Informatica',
+                    uuid: localStorage.getItem('ticket_uuid')
                 })
-            }
-        })
+            }).then(res => res.json()).then(res => {
+                if (res.success) {
+                    if (res.exists) {
+                        document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name <br> "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
+                        initFormBasic();
+                    } else {
+                        initForm();
+                    }
+                } else {
+                    initForm();
+                    alert('Server responded with error code: ' + res.error);
+                }
+            }).catch(err => {
+                initForm();
+                console.log(err);
+                alert('An error occured, please open the developer console to check');
+            })
+        } else {
+            initForm();
+        }
     </script>
 </html>
