@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Ticket Example</title>
+        <style media="screen">
+            form {
+                width: 300px;
+                height: 500px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                background: white;
+            }
+
+            body {
+                background: #d9d9d9;
+            }
+
+            form input[name=identifier] {
+                background-color: transparent;
+                outline: none;
+                width: 80%;
+                margin: 20px 10%;
+                border: none;
+                border-bottom: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <form class="ticket" action="#" method="post">
+            <input type="hidden" name="apikey" value="AL99RtseuF4pAB2hZJdHvxSGFDJocNStG3glMR3UVlm9nATfMTdPjJQSSbwmvYBhYFnjs5fbwLv6yafVWi368PwGlSz6YRJ8lOXR">
+            <input type="text" name="identifier" placeholder="Name" value="">
+            <input type="submit" value="Open ticket">
+        </form>
+    </body>
+    <script type="text/javascript">
+        document.querySelector('form.ticket').addEventListener('submit', e => {
+            e.preventDefault();
+            fetch('https://mystem.nl/api/ticket/open', {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    apikey: e.target.querySelector('input[name=apikey]').value,
+                    room: 'Informatica',
+                    identifier: e.target.querySelector('input[name=identifier]')
+                })
+            }).then(res => res.json()).then(res => {
+                if (res.success) {
+                    alert('Successfully opened a ticket');
+                } else {
+                    alert('Server responded with error code: ' + res.error);
+                }
+            }).catch(err => {
+                console.log(err);
+                alert('An error occured, please open the developer console to check');
+            })
+        })
+    </script>
+</html>
