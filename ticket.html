@@ -42,7 +42,7 @@
             }
 
             form input[name=identifier]:hover {
-                border-bottom: 1px solid yellow;
+                border-bottom: 1px solid #222;
             }
 
             form input[type=submit] {
@@ -67,27 +67,32 @@
     <script type="text/javascript">
         document.querySelector('form.ticket').addEventListener('submit', e => {
             e.preventDefault();
-            fetch('https://mystem.nl/api/ticket/open', {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    apikey: e.target.querySelector('input[name=apikey]').value,
-                    room: 'Informatica',
-                    identifier: e.target.querySelector('input[name=identifier]').value
+
+            if (e.target.querySelector('input[name=identifier]').value === '') {
+                alert('You must enter your name!');
+            } else {
+                fetch('https://mystem.nl/api/ticket/open', {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        apikey: e.target.querySelector('input[name=apikey]').value,
+                        room: 'Informatica',
+                        identifier: e.target.querySelector('input[name=identifier]').value
+                    })
+                }).then(res => res.json()).then(res => {
+                    if (res.success) {
+                        alert('Successfully opened a ticket');
+                    } else {
+                        alert('Server responded with error code: ' + res.error);
+                    }
+                }).catch(err => {
+                    console.log(err);
+                    alert('An error occured, please open the developer console to check');
                 })
-            }).then(res => res.json()).then(res => {
-                if (res.success) {
-                    alert('Successfully opened a ticket');
-                } else {
-                    alert('Server responded with error code: ' + res.error);
-                }
-            }).catch(err => {
-                console.log(err);
-                alert('An error occured, please open the developer console to check');
-            })
+            }
         })
     </script>
 </html>
