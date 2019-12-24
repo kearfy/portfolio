@@ -33,6 +33,11 @@
                 font-size: 40px;
             }
 
+            form p.notice {
+                opacity: 0.5;
+                font-size: 12px;
+            }
+
             form input[name=identifier] {
                 background-color: transparent;
                 outline: none;
@@ -68,6 +73,8 @@
         </form>
     </body>
     <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", e => document.querySelector('form input[name=identifier]').focus());
+
         function initForm() {
             document.querySelector('form.ticket').addEventListener('submit', e => {
                 e.preventDefault();
@@ -127,7 +134,7 @@
                 if (res.success) {
                     if (res.exists) {
                         document.querySelector('form.ticket').innerHTML = '<p class="title">#' + localStorage.getItem('ticket_uuid') + '</p><p>Successfully opened a ticket with the name <br> "' + localStorage.getItem('ticket_identifier') + '" and the uuid which can be seen above.</p>';
-                        document.querySelector('form.ticket').innerHTML += '<br><br><p>To submit a new ticket, reload the page once the old one is closed.</p>'
+                        document.querySelector('form.ticket').innerHTML += '<br><br><p class="notice">To submit a new ticket, reload the page <br> once the old one is closed.</p>'
                         initFormBasic();
                     } else {
                         initForm();
