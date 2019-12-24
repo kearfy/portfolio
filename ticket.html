@@ -87,7 +87,7 @@
                     })
                 }).then(res => res.json()).then(res => {
                     if (res.success) {
-                        document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
+                        document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name <br> "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
                     } else {
                         alert('Server responded with error code: ' + res.error);
                     }
