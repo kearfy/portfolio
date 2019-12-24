@@ -76,7 +76,7 @@
                 body: JSON.stringify({
                     apikey: e.target.querySelector('input[name=apikey]').value,
                     room: 'Informatica',
-                    identifier: e.target.querySelector('input[name=identifier]')
+                    identifier: e.target.querySelector('input[name=identifier]').value
                 })
             }).then(res => res.json()).then(res => {
                 if (res.success) {
