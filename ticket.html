@@ -109,7 +109,7 @@
             })
         }
 
-        if (localStorage.getItem('uuid') !== null) {
+        if (localStorage.getItem('ticket_uuid') !== null) {
             console.log(1)
             fetch('https://mystem.nl/api/ticket/exists', {
                 method: "POST",
@@ -142,7 +142,7 @@
             })
         } else {
             console.log(2);
-            console.log(localStorage.getItem('uuid'));
+            console.log(localStorage.getItem('ticket_uuid'));
             initForm();
         }
     </script>
