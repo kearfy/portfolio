@@ -110,6 +110,7 @@
         }
 
         if (localStorage.getItem('uuid') !== null) {
+            console.log(1)
             fetch('https://mystem.nl/api/ticket/exists', {
                 method: "POST",
                 headers: {
@@ -122,6 +123,7 @@
                     uuid: localStorage.getItem('ticket_uuid')
                 })
             }).then(res => res.json()).then(res => {
+                console.log(res);
                 if (res.success) {
                     if (res.exists) {
                         document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name <br> "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
@@ -139,6 +141,8 @@
                 alert('An error occured, please open the developer console to check');
             })
         } else {
+            console.log(2);
+            console.log(localStorage.getItem('uuid'));
             initForm();
         }
     </script>
