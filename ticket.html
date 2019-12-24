@@ -126,7 +126,7 @@
                 console.log(res);
                 if (res.success) {
                     if (res.exists) {
-                        document.querySelector('form.ticket').innerHTML = '<p class="title">#' + res.ticket.uuid + '</p><p>Successfully opened a ticket with the name <br> "' + res.ticket.identifier + '" and the uuid which can be seen above.</p>';
+                        document.querySelector('form.ticket').innerHTML = '<p class="title">#' + localStorage.getItem('ticket_uuid') + '</p><p>Successfully opened a ticket with the name <br> "' + localStorage.getItem('ticket_identifier') + '" and the uuid which can be seen above.</p>';
                         initFormBasic();
                     } else {
                         initForm();
