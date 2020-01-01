@@ -131,6 +131,15 @@
                     document.querySelector('form input[name=identifier]').focus();
                 })
             })
+
+            window.addEventListener('MystemSignIn', e => {
+                var result = e.detail;
+                if (result.success) {
+                    var user = result.user;
+                    if (u.success) document.querySelector('form input[name=identifier]').innerText = user.fname + ' ' + user.lname;
+                    document.querySelector('form input[name=identifier]').focus();
+                }
+            })
         }
 
         function initFormBasic() {
