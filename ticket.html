@@ -124,15 +124,13 @@
                 }
             })
 
-            document.addEventListener("DOMContentLoaded", e => {
-                mystem.auth.authenticated(authenticated => {
-                    if (!authenticated) document.querySelector('form input[name=identifier]').focus();
-                    if (authenticated) mystem.auth.user(u => {
-                        if (u.success) document.querySelector('form input[name=identifier]').innerText = u.info.fname + ' ' + u.info.lname;
-                        document.querySelector('form input[name=identifier]').focus();
-                    })
+            mystem.auth.authenticated(authenticated => {
+                if (!authenticated) document.querySelector('form input[name=identifier]').focus();
+                if (authenticated) mystem.auth.user(u => {
+                    if (u.success) document.querySelector('form input[name=identifier]').innerText = u.user.fname + ' ' + u.user.lname;
+                    document.querySelector('form input[name=identifier]').focus();
                 })
-            });
+            })
         }
 
         function initFormBasic() {
