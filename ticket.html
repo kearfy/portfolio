@@ -127,7 +127,7 @@
             mystem.auth.authenticated(authenticated => {
                 if (!authenticated) document.querySelector('form input[name=identifier]').focus();
                 if (authenticated) mystem.auth.user(u => {
-                    if (u.success) document.querySelector('form input[name=identifier]').innerText = u.user.fname + ' ' + u.user.lname;
+                    if (u.success) document.querySelector('form input[name=identifier]').value = u.user.fname + ' ' + u.user.lname;
                     document.querySelector('form input[name=identifier]').focus();
                 })
             })
@@ -136,7 +136,7 @@
                 var result = e.detail;
                 if (result.success) {
                     var user = result.user;
-                    if (u.success) document.querySelector('form input[name=identifier]').innerText = user.fname + ' ' + user.lname;
+                    document.querySelector('form input[name=identifier]').value = user.fname + ' ' + user.lname;
                     document.querySelector('form input[name=identifier]').focus();
                 }
             })
