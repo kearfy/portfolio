@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Ticket Example</title>
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+        <link rel="stylesheet" href="./style.css">
         <style media="screen">
             form {
                 width: 400px;
@@ -65,6 +67,19 @@
         </style>
     </head>
     <body>
+        <div class="navbar">
+            <a href="#landing" class="brand">Portfolio: Micha de Vries</a>
+
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle">
+
+            <div class="links">
+                <a href="#" MystemAuthBtn NoLogo SignedOut></a>
+                <a href="#">Contact</a>
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+            </div>
+        </div>
         <form class="ticket" action="#" method="post">
             <p class="title">Open ticket</p>
             <input type="hidden" name="apikey" value="59b78d95f798cbf4e0b19849f43fcc58d569ac08981f2991c6fe894a376b9ef349f6bf4162c8397765209d5748079074a199">
@@ -72,9 +87,9 @@
             <input type="submit" value="Open ticket">
         </form>
     </body>
+    <script src="https://mystem.nl/libs/mystem/authenticate" key="4cbe86d7ee428bcb704eab90f391ca9f2854a4c04a95e9bd18838f6a4de00eeaeab9a1b33a61ac703a4507979b3297246zvk"></script>
+    <script src="/script.js"></script>
     <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", e => document.querySelector('form input[name=identifier]').focus());
-
         function initForm() {
             document.querySelector('form.ticket').addEventListener('submit', e => {
                 e.preventDefault();
@@ -107,6 +122,16 @@
                     })
                 }
             })
+
+            document.addEventListener("DOMContentLoaded", e => {
+                mystem.auth.authenticated(authenticated => {
+                    if (!authenticated) document.querySelector('form input[name=identifier]').focus();
+                    if (authenticated) mystem.auth.user(u => {
+                        if (u.success) document.querySelector('form input[name=identifier]').innerText = u.info.fname + ' ' + u.info.lname;
+                        document.querySelector('form input[name=identifier]').focus();
+                    })
+                })
+            });
         }
 
         function initFormBasic() {
