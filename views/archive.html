@@ -1,0 +1,60 @@
+<h1 class="title">Archief</h1>
+<div class="grid">
+    <div class="column column1"></div>
+    <div class="column column2"></div>
+    <div class="column column3"></div>
+    <div class="column column4"></div>
+</div>
+
+<link rel="stylesheet" href="/assets/css/grid.css">
+<style>
+    div.content > .title {
+        font-family: 'Raleway', sans-serif;
+        font-size: 50px;
+        padding: 200px 0px;
+        width: 100%;
+        text-align: center;
+        background-color: #f9f6f7;
+    }
+</style>
+
+<script type="text/javascript">
+    //retrieve a list of posts.
+    fetch('/common/posts.json', {
+        method: 'get'
+    }).then(res => res.json()).then(res => {
+        //start with column one.
+        var column = 1;
+
+        //reverse the array so that the latest post will come first.
+        res.slice().reverse().forEach(post => {
+            //create a div, add the 'card' class and set the onclick event to change the hash to the given target.
+            var card = document.createElement('div');
+            card.classList.add('card');
+            card.addEventListener('click', e => location.hash = post.target);
+
+            //if an artwork is given, create an 'img' tag and add it to the card.
+            if (post.artwork !== false) {
+                var artwork = document.createElement('img');
+                artwork.src = post.artwork;
+                card.appendChild(artwork);
+            }
+
+            //add the title to the card.
+            var title = document.createElement('h3');
+            title.classList.add('title');
+            title.innerText = post.title;
+            card.appendChild(title);
+
+            //add the description to the card.
+            var description = document.createElement('p');
+            description.classList.add('desc');
+            description.innerText = post.description;
+            card.appendChild(description);
+
+            //insert the card in the correct column and update the 'column' variable so that the next card will be inserted in a different column.
+            document.querySelector('.grid .column.column' + column).appendChild(card);
+            column = (column == 4 ? 1 : column + 1);
+        });
+    })
+</script>

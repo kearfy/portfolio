@@ -1,0 +1,219 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    width: calc(100% - 12px);
+    height: calc(100vh - 16px);
+    background-color: white;
+    padding: 8px;
+    padding-right: 4px;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: calc(100vh - 16px);
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+::-webkit-scrollbar-track {
+    background: white;
+}
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+div.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    line-height: 60px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 22px;
+    position: fixed;
+    z-index: 997;
+}
+
+div.navbar .brand {
+    display: inline-block;
+    color: black;
+    width: calc(45% - 5px); /* -5px because of some spacing issue */
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    margin-left: 5%;
+}
+
+div.navbar .brand:hover {
+    color: #666;
+}
+
+div.navbar label {
+    margin-right: 10%;
+    font-size: 2rem;
+    display: none;
+    width: 2rem;
+    float: right;
+}
+
+div.navbar #toggle {
+    display: none;
+}
+
+div.navbar .links {
+    display: inline-block;
+    width: 45%;
+    text-align: right;
+    margin-right: 5%;
+}
+
+div.navbar .links a {
+    color: black;
+    text-decoration: none;
+    margin: 0px 15px;
+    font-size: 18px;
+}
+
+div.navbar .links a img {
+    height: 15px;
+    margin-left: 10px;
+}
+
+div.navbar .links a:hover {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    div.navbar .brand {
+        width: 75%;
+    }
+
+    div.navbar label {
+        display: block;
+        cursor: pointer;
+    }
+
+    div.navbar .links {
+        width: 90%;
+        padding: 0px 5%;
+        display: block;
+        background-color: white;
+        position: absolute;
+        top: 60px;
+        transition: all .5s ease;
+        height: 0px;
+        overflow: hidden;
+        z-index: 997;
+    }
+
+    div.navbar .links a {
+        display: block;
+        float: left;
+        margin-left: 10%;
+        width: 90%;
+        text-align: left;
+    }
+
+    div.navbar #toggle:checked + .links {
+        height: 200px;
+    }
+}
+
+div.content {
+    margin-top: 60px;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+}
+
+div.footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+div.preloader {
+    width: 100%;
+    height: calc(100vh - 16px);
+    z-index: 999;
+    display: block;
+    position: fixed;
+    background-color: white;
+    transition: opacity 0.2s ease;
+}
+
+div.preloader .spinner {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+
+  -webkit-animation: preloader-rotate 1s infinite linear;
+  animation: preloader-rotate 1s infinite linear;
+}
+
+div.preloader .spinner .dot {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: black;
+  border-radius: 100%;
+
+  -webkit-animation: preloader-bounce 2.0s infinite ease-in-out;
+  animation: preloader-bounce 2.0s infinite ease-in-out;
+}
+
+div.preloader .spinner .dot.second {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes preloader-rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes preloader-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+@-webkit-keyframes preloader-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes preloader-bounce {
+  0%, 100% {
+    transform: scale(0.2);
+    -webkit-transform: scale(0.2);
+  } 50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+    html, body {
+        width: 100%;
+        height: 100vh;
+        padding: 0px;
+    }
+}

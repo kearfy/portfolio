@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Portfolio",
+        "description": "Alle projecten die ik ooit ben begonnen.",
+        "artwork": "/assets/img/post-portfolio/artwork.jpg",
+        "target": "/post/portfolio"
+    },
+    {
+        "title": "Fotografie",
+        "description": "Een album met een aantal foto's die ik heb gemaakt.",
+        "artwork": "/assets/img/post-photographity/artwork.jpg",
+        "target": "/post/photographity"
+    }
+]

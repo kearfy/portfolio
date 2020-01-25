@@ -2,36 +2,25 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Micha de Vries</title>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
-        <link rel="stylesheet" href="./style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto|Source+Sans+Pro&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/base.css">
     </head>
     <body>
-        <div class="navbar">
-            <a href="#landing" class="brand">Portfolio: Micha de Vries</a>
-
-            <label for="toggle">&#9776;</label>
-            <input type="checkbox" id="toggle">
-
-            <div class="links">
-                <a href="#" MystemAuthBtn NoLogo SignedOut></a>
-                <a href="#">Contact</a>
-                <a href="#">About</a>
-                <a href="#">Projects</a>
+        <div class="preloader">
+            <div class="spinner">
+                <div class="dot"></div>
+                <div class="dot second"></div>
             </div>
         </div>
-        <section class="landing" id="landing">
-            <div class="intro">
-                <div class="title">Micha de Vries</div>
-                <div class="subtitle">An advanced webdeveloper</div>
-            </div>
-        </section>
-        <section class="about" id="about">
-            <p class="name"></p>
-        </section>
+        <require src="/elements/navbar.html"></require>
+        <div class="content"></div>
+        <require src="/elements/footer.html"></require>
     </body>
-    <script src="https://mystem.nl/libs/mystem/authenticate" key="90a31d20ea3551ea52d08bfc56deb434cad381f8e4e6ddb15a54da537cf0db971a1ca5826d3546288e0ce01a5941c2a9ntkr"></script>
-    <script src="/script.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script type="text/javascript">
+        if (location.host == '') alert("ERROR: deze website moet in de root van een webserver worden geplaatst, omdat bepaalde belangrijke resources anders niet geladen kunnen worden vanwege de manier waarop de paden naar deze bestanden zijn gedefineerd.");
+    </script>
+    <noscript>Deze website heeft javascript nodig om te werken.</noscript>
 </html>

@@ -1,0 +1,298 @@
+<section class="landing">
+
+</section>
+<section class="intro">
+    <h1 class="title">Wie ben ik en wat doe ik?</h1>
+    <div class="about">
+        <div class="img-container">
+            <img src="/assets/img/home/micha.JPG" alt="">
+        </div>
+        <div class="text-container">
+            <p>
+                Ik ben Micha de Vries. Ik ben geinterreseert in zoal tech, muziek en fotografie.
+                Aangezien ik momenteel nog op school zit is het voor nu een hobby, maar zodra ik klaar ben met school wil ik later zeker wat kunnen betekenen in de tech wereld.
+                Op het moment bouw ik vooral websites en expirimenteer ik met verschillende technologiën zoals virtualizatie en de verste uithoeken van Javascript. <br>
+                Ook verdiep ik mij vaak in de wereld van muziek. Ik maak daarvoor vaak gebruik van <a href="https://image-line.com">FL Studio</a>, maar ook simpelweg met een piano en mijn stem. <br>
+                Ten slotte vind ik het altijd heel leuk om foto's te maken als ik bijvoorbeeld met de hond op het strand of in het bos loop. Je kunt een artikel met verschillende foto's van mij <a href="#">hier vinden</a>.
+            </p>
+        </div>
+    </div>
+</section>
+<table class="latest">
+    <tr class="title"><td align="center">Laatste berichten</td></tr>
+    <tr class="blank"></tr>
+    <tr class="posts"></tr>
+</table>
+
+<style media="screen">
+    section.landing {
+        height: 80vh;
+        width: 100%;
+        position: relative;
+        display: block;
+        background-image: url('https://images.wallpaperscraft.com/image/silhouette_sea_sunset_man_horizon_120238_1920x1080.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    section.intro {
+        height: 45vh;
+        width: 100%;
+        position: relative;
+        background: white;
+        -webkit-clip-path: polygon(0 100px, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 100px, 100% 0, 100% 100%, 0 100%);
+        top: -150px;
+        padding-top: 150px;
+        display: block;
+    }
+
+    section.intro .title {
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Raleway', sans-serif;
+        width: 100%;
+        font-weight: 100;
+    }
+
+    section.intro .about {
+        width: 100%;
+        margin: 50px 0px;
+        height: 400px;
+    }
+
+    section.intro .about .img-container {
+        width: 50%;
+        height: 400px;
+        position: relative;
+        display: inline-block;
+    }
+
+    section.intro .about .img-container img {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+
+    section.intro .about .text-container {
+        width: 49%;
+        height: 400px;
+        position: relative;
+        display: inline-block;
+    }
+
+    section.intro .about .text-container p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 80%;
+        font-size: 17px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        section.intro {
+            height: 100vh;
+        }
+
+        section.intro .title {
+            font-size: 25px;
+        }
+
+        section.intro .about {
+            width: 100%;
+            margin: 25px 0px;
+            height: 100vh;
+        }
+
+        section.intro .about .img-container {
+            width: 100%;
+            height: 175px;
+            display: block;
+        }
+
+        section.intro .about .img-container img {
+            width: 150px;
+            height: 150px;
+        }
+
+        section.intro .about .text-container {
+            width: 90%;
+            margin: 5%;
+            height: calc(100vh - 175px);
+            display: block;
+        }
+
+        section.intro .about .text-container p {
+            position: relative;
+            top: unset;
+            left: unset;
+            transform: unset;
+            width: 100%;
+            font-size: 15px;
+        }
+    }
+
+    table.latest,
+    table.latest tr {
+        width: 100%;
+        table-layout: fixed;
+        margin-bottom: 100px;
+    }
+
+    table.latest tr.title td {
+        font-family: 'Raleway';
+        font-size: 30px;
+    }
+
+    table.latest tr.blank {
+        height: 150px !important;
+    }
+
+    table.latest tr.posts td .card {
+        width: 65%;
+        margin: 0px calc(25% / 2);
+        background: #f9f6f7;
+        padding: 5%;
+        text-align: center;
+        transition: all .3s ease;
+        cursor: pointer;
+    }
+
+    table.latest tr.posts td .card img {
+        width: 100%;
+        margin-bottom: 40px;
+        display: block;
+    }
+
+    table.latest tr.posts td .card img.icon {
+        width: unset !important;
+        height: 100px;
+        text-align: center;
+        margin-bottom: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table.latest tr.posts td .card .title {
+        padding: 20px;
+        font-size: 25px;
+    }
+
+    table.latest tr.posts td .card .desc {
+        padding: 20px 10%;
+        font-size: 17px;
+        width: 80%;
+        opacity: 0.5;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        table.latest tr.title td {
+            font-size: 25px;
+        }
+
+        table.latest tr.posts td .card {
+            width: 65%;
+            margin: 0px calc(25% / 2);
+            background: #f9f6f7;
+            padding: 5%;
+            text-align: center;
+            transition: all .3s ease;
+            cursor: pointer;
+        }
+
+        table.latest tr.posts td {
+            display: block;
+            clear: both;
+            margin-top: 50px;
+        }
+
+        table.latest tr.posts td:nth-child(1) {
+            margin-top: 0px;
+        }
+
+        table.latest tr.posts td .card img {
+            width: 100%;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        table.latest tr.posts td .card img.icon {
+            width: unset !important;
+            height: 100px;
+            text-align: center;
+            margin-bottom: 40px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.latest tr.posts td .card .title {
+            padding: 20px;
+            font-size: 25px;
+        }
+
+        table.latest tr.posts td .card .desc {
+            padding: 20px 10%;
+            font-size: 17px;
+            width: 80%;
+            opacity: 0.5;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    //retrieve a list of posts.
+    fetch('/common/posts.json', {
+        method: 'get'
+    }).then(res => res.json()).then(res => {
+        //reverse the array so that the latest post will come first.
+        res.slice().reverse().forEach((post, i) => {
+            //make sure we won't break the limit of 3 featured posts.
+            if (i < 3) {
+                //create a div, add the 'card' class and set the onclick event to change the hash to the given target.
+                var card = document.createElement('div');
+                card.classList.add('card');
+                card.setAttribute('onclick', "location.hash = '" + post.target + "';")
+
+                //if an artwork is given, create an 'img' tag and add it to the card.
+                if (post.artwork !== false) {
+                    var artwork = document.createElement('img');
+                    artwork.src = post.artwork;
+                    card.appendChild(artwork);
+                }
+
+                //add the title to the card.
+                var title = document.createElement('h3');
+                title.classList.add('title');
+                title.innerText = post.title;
+                card.appendChild(title);
+
+                //add the description to the card.
+                var description = document.createElement('p');
+                description.classList.add('desc');
+                description.innerText = post.description;
+                card.appendChild(description);
+
+                //insert the card in the correct column and update the 'column' variable so that the next card will be inserted in a different column.
+                var td = document.createElement('td');
+                td.appendChild(card);
+                document.querySelector('table.latest tr.posts').appendChild(td);
+                document.querySelector('table.latest tr.title').setAttribute('colspan', i + 1);
+                document.querySelector('table.latest tr.title td').setAttribute('colspan', i + 1);
+            }
+        });
+
+        //set the width of the table cell's in mobile view to either 100%, 200% or 300% based on the length of the response.
+        document.querySelector('div.content').innerHTML += '<style>@media only screen and (max-width: 1024px) { table.latest tr.posts td { width: ' + (res.length > 3 ? 3 : res.length) + '00% !important; } }</style>';
+    })
+</script>

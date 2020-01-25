@@ -1,0 +1,23 @@
+[
+    {
+        "brand": "MYSTEM",
+        "website": "https://mystem.nl",
+        "banner": false,
+        "icon": false,
+        "description": "MYSTEM Biedt API's en libraries, voornamelijk voor webontwikkelaars. Hun doel is om het web te vereenvoudigen voor zowel ontwikkelaars als eindgebruikers. Dit doen zij door innovatieve diensten te creëren."
+    },
+    {
+        "brand": "Fotografie",
+        "website": "#/post/photographity",
+        "banner": "/assets/img/post-photographity/artwork.jpg",
+        "icon": false,
+        "description": "Ik hou veel van foto's maken en daarbij gelijk van fotografie. neem eens een kijkje in dit compacte foto album die ik heb samen gesteld."
+    },
+    {
+        "brand": "Singalongzanger",
+        "website": "https://singalongzanger.nl",
+        "banner": false,
+        "icon": "https://singalongzanger.nl/wp-content/uploads/2019/06/cropped-gitaar_logo_transparant-192x192.png",
+        "description": "Marc de Vries is een professioneel, enthousiast en veelzijdig zanger/gitarist, die op geheel eigen wijze een muzikale invulling verzorgt. Voor Marc staat interactie met het publiek, het vinden van de juiste toon en het raken van de gevoelige snaar centraal. Dit allemaal met een gitaar en een zangstem."
+    }
+]

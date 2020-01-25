@@ -1,0 +1,87 @@
+div.content .grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 4px;
+}
+
+div.content .grid .column {
+    flex: 23%;
+    max-width: 23%;
+    padding: 0 1%;
+}
+
+div.content .grid.two-column .column {
+    flex: 35%;
+    max-width: 35%;
+    margin: 0 6%;
+}
+
+div.content .grid .column > img {
+    vertical-align: middle;
+    background: #f9f6f7;
+    margin-top: calc(5vh / 2);
+    width: 100%;
+}
+
+div.content .grid .column .card {
+    vertical-align: middle;
+    background: #f9f6f7;
+    padding: 5%;
+    margin-top: calc(5vh / 2);
+    width: 90%;
+    text-align: center;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+div.content .grid .column .card img {
+    width: 100%;
+    margin-bottom: 40px;
+    display: block;
+}
+
+div.content .grid .column .card img.icon {
+    width: unset !important;
+    height: 100px;
+    text-align: center;
+    margin-bottom: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.content .grid .column .card .title {
+    padding: 20px;
+    font-size: 25px;
+}
+
+div.content .grid .column .card .desc {
+    padding: 20px 10%;
+    font-size: 17px;
+    width: 80%;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 1024px) {
+    div.content .grid .column,
+    div.content .grid.two-column .column {
+        flex: 47%;
+        max-width: 47%;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    div.content > .title {
+        padding: 100px 0px;
+        background: white;
+    }
+
+    div.content .grid .column,
+    div.content .grid.two-column .column {
+        flex: 100%;
+        max-width: 100%;
+        padding: 20px 0px;
+    }
+}

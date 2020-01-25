@@ -1,0 +1,193 @@
+<section class="intro">
+    <div class="title-container">
+        <h1>Portfolio</h1>
+    </div>
+    <div class="text-container">
+        <p>
+            Ben je geinterreseert in wat ik zo allemaal doe? Neem vooral een kijkje binnen project waarin ik deel heb genomen.
+            Zolang het project beschikbaar en publiek is, valt het namelijk te bekijken.
+            In het geval dat je contact met mij op wilt nemen, kan dat <a onclick="window.open('mailto:mt.dev@hotmail.com?subject=Contact via Blog');" nonav>hier</a>.
+        </p>
+    </div>
+</section>
+
+<section class="portfolio">
+    <div class="grid two-column">
+        <div class="column column1"></div>
+        <div class="column column2"></div>
+        <div class="column column3"></div>
+        <div class="column column4"></div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="/assets/css/grid.css">
+<style media="screen">
+    section.intro {
+        width: 100%;
+        margin: 100px 0px;
+        height: 400px;
+    }
+
+    section.intro .title-container {
+        width: 600px;
+        height: calc(400px - 10%);
+        margin: 5% calc(25% - 300px);
+        position: relative;
+        display: inline-block;
+
+        background-image: url('https://images.wallpaperscraft.com/image/sea_waves_island_154684_1400x1050.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    section.intro .title-container h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 80%;
+        font-size: 30px;
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        color: white;
+    }
+
+    section.intro .text-container {
+        width: 39%;
+        height: calc(400px - 10%);
+        margin: 5%;
+        position: relative;
+        display: inline-block;
+    }
+
+    section.intro .text-container p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 80%;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    section.intro .text-container p a {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    section.portfolio {
+        width: 100%;
+        min-height: 100%;
+        margin: 100px 0px;
+    }
+
+    section.portfolio .grid .column .card {
+        width: calc(600px - 10%);
+        margin: 0 calc(51% - 300px);
+        margin-top: calc(5vh);
+    }
+
+    @media only screen and (max-width: 1024px) {
+        section.intro {
+            height: 400px;
+            margin: 0px;
+        }
+
+        section.intro .title-container {
+            width: 100%;
+            height: 200px;
+            margin: 0px;
+            display: block;
+        }
+
+        section.intro .title-container h1 {
+            font-size: 25px;
+        }
+
+        section.intro .text-container {
+            width: 100%;
+            height: 200px;
+            margin: 0px;
+            display: block;
+        }
+
+        section.intro .text-container p {
+            font-size: 15px;
+        }
+
+        section.portfolio {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        section.portfolio .grid.two-column .column {
+            flex: 100%;
+            max-width: 100%;
+        }
+
+        section.portfolio .grid .column .card {
+            width: 90%;
+            margin: 0 5%;
+            margin-top: 5%;
+            padding: 20px 0px;
+        }
+
+        section.portfolio .grid .column .card img {
+            width: 90%;
+            margin: 40px 5%;
+            margin-top: 0px;
+        }
+
+        section.portfolio .grid .column1 .card:nth-child(1) {
+            margin-top: 0px;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    //retrieve a list of projects.
+    fetch('/common/post-portfolio-list.json', {
+        method: 'get'
+    }).then(res => res.json()).then(res => {
+        //start with column one.
+        var column = 1;
+
+        //reverse the array so that the latest project will come first.
+        res.slice().reverse().forEach(project => {
+            //create a div, add the 'card' class and set the onclick event to redirect to the project.
+            var card = document.createElement('div');
+            card.classList.add('card');
+            card.addEventListener('click', e => window.open(project.website));
+
+            //if a banner is given, create an 'img' tag and add it to the card.
+            if (project.banner !== false) {
+                var banner = document.createElement('img');
+                banner.src = project.banner;
+                card.appendChild(banner);
+            } else if (project.icon !== false) {
+                var icon = document.createElement('img');
+                icon.src = project.icon;
+                icon.classList.add('icon');
+                card.appendChild(icon);
+            }
+
+            //add the title to the card.
+            var title = document.createElement('h3');
+            title.classList.add('title');
+            title.innerText = project.brand;
+            card.appendChild(title);
+
+            //add the description to the card.
+            var description = document.createElement('p');
+            description.classList.add('desc');
+            description.innerText = project.description;
+            card.appendChild(description);
+
+            //insert the card in the correct column and update the 'column' variable so that the next card will be inserted in a different column.
+            document.querySelector('.grid .column.column' + column).appendChild(card);
+            column = (column == 2 ? 1 : column + 1);
+        });
+    })
+</script>
