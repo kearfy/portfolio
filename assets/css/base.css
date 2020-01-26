@@ -83,6 +83,7 @@ div.navbar .links a {
     text-decoration: none;
     margin: 0px 15px;
     font-size: 18px;
+    cursor: pointer;
 }
 
 div.navbar .links a img {
