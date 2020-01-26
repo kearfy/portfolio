@@ -67,6 +67,7 @@ div.content .grid .column .card .desc {
     div.content .grid.two-column .column {
         flex: 47%;
         max-width: 47%;
+        padding: 0px;
     }
 
 
@@ -80,8 +81,9 @@ div.content .grid .column .card .desc {
 
     div.content .grid .column,
     div.content .grid.two-column .column {
-        flex: 100%;
-        max-width: 100%;
-        padding: 20px 0px;
+        flex: 90%;
+        max-width: 90%;
+        margin: auto 5%;
+        padding: 0px;
     }
 }

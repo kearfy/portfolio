@@ -91,24 +91,20 @@
 
     @media only screen and (max-width: 1024px) {
         section.intro {
-            height: 400px;
+            height: 800px;
             margin: 0px;
         }
 
         section.intro .title-container {
             width: 100%;
-            height: 200px;
+            height: 400px;
             margin: 0px;
             display: block;
         }
 
-        section.intro .title-container h1 {
-            font-size: 25px;
-        }
-
         section.intro .text-container {
             width: 100%;
-            height: 200px;
+            height: 400px;
             margin: 0px;
             display: block;
         }
@@ -142,6 +138,28 @@
 
         section.portfolio .grid .column1 .card:nth-child(1) {
             margin-top: 0px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        section.intro {
+            height: 400px;
+        }
+
+        section.intro .title-container {
+            height: 200px;
+        }
+
+        section.intro .title-container h1 {
+            font-size: 25px;
+        }
+
+        section.intro .text-container {
+            height: 200px;
+        }
+
+        section.intro .text-container p {
+            font-size: 15px;
         }
     }
 </style>
