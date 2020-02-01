@@ -227,3 +227,31 @@ div.preloader .spinner .dot.second {
 .card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+/* SITE-OFFLINE OVERLAY */
+    .site-offline {
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 100vh;
+        line-height: 100vh;
+        text-align: center;
+        font-size: 50px;
+        font-family: "Courier New", Courier, monospace;
+        background-color: white;
+        display: none;
+    }
+
+    .site-offline b {
+        font-family: "Lucida Console", Monaco, monospace;
+    }
+
+    html[offline=true] .site-offline {
+        display: block;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .site-offline {
+            font-size: 30px;
+        }
+    }
