@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Offline - Ferrie Moene</title>
+        <style media="screen">
+            * {
+                padding: 0px;
+                margin: 0px;
+            }
+
+            html, body {
+                width: 100%;
+                height: 100vh;
+                line-height: 100vh;
+                text-align: center;
+                font-size: 50px;
+                font-family: "Courier New", Courier, monospace;
+            }
+
+            b {
+                font-family: "Lucida Console", Monaco, monospace;
+            }
+
+            @media only screen and (max-width: 768px) {
+                html, body {
+                    font-size: 30px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <span class="target">Je bent</span> <b>offline</b>.
+        <script type="text/javascript">
+            //redirect to homepage once client is back online.
+            window.addEventListener('online', e => location.reload());
+            window.addEventListener('offline', e => location.reload());
+            if (location.pathname.includes('offline.html')) location.replace('/');
+
+            //if client is online, server is offline.
+            if (navigator.onLine) {
+                //update the notice.
+                document.querySelector('span.target').innerText = 'server';
+
+                //try to reach the server every 10 seconds.
+                setInterval(() => fetch(location.protocol + '//' + location.host + '?serveronline', {
+                    method: 'get'
+                }).then(res => res.status == 200 ? res.text() : 'false').then(res => {
+                    if (res != 'false') location.reload();
+                }), 10000);
+            }
+        </script>
+    </body>
+</html>
