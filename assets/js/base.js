@@ -195,10 +195,10 @@ function initializeLinks() {
     document.querySelectorAll('a').forEach(link => {
         //filter all the targeted links
         //if the link contains the 'nonav' attribute, we skip it since it is marked for the filter not to be applied to the link
-        //if the link's hostname contains michadevries.tk or if it is empty (since this can work without a webserver), it's a target.
+        //if the link's hostname contains michadevries.nl or if it is empty (since this can work without a webserver), it's a target.
         //if the link's target is set to '_blank' (new tab), we skip it.
         //if the filter was already applied to the link (link.initialized), we skip it.
-        if (link.getAttribute('nonav') === null && (link.hostname.includes('michadevries.tk') || link.hostname == '') && link.getAttribute('target') !== '_blank' && !link.initialized) {
+        if (link.getAttribute('nonav') === null && (link.hostname.includes('michadevries.nl') || link.hostname == '') && link.getAttribute('target') !== '_blank' && !link.initialized) {
             link.addEventListener('click', e => {
                 //prevent the default click event of the link.
                 e.preventDefault();
@@ -220,7 +220,7 @@ function initializeLinks() {
         }
 
         //if the link's target is set to '_blank', the 'nonav' attribute is not preset and the link is torgeted to our local domain, make sure the url is formatted correctly.
-        if (link.getAttribute('nonav') === null && (link.hostname.includes('michadevries.tk') || link.hostname == '') && link.getAttribute('target') === '_blank') {
+        if (link.getAttribute('nonav') === null && (link.hostname.includes('michadevries.nl') || link.hostname == '') && link.getAttribute('target') === '_blank') {
             //store the url in a variable.
             var path = link.getAttribute('href');
 
