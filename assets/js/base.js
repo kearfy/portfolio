@@ -40,7 +40,7 @@ window.addEventListener('hashchange', e => {
             document.querySelector('body div.content').innerHTML = res;
 
             //scroll to the top of the page
-            document.body.scrollTo(0, 0);
+            window.scrollTo(0, 0);
 
             //reload all the potential scripts from the retrieved page.
             document.querySelector('body div.content').reloadScripts();
@@ -83,7 +83,7 @@ window.addEventListener('hashchange', e => {
                     document.querySelector('body div.content').innerHTML = res;
 
                     //scroll to the top of the page
-                    document.body.scrollTo(0, 0);
+                    window.scrollTo(0, 0);
 
                     //reload all the potential scripts from the retrieved page.
                     document.querySelector('body div.content').reloadScripts();
@@ -109,7 +109,7 @@ window.addEventListener('hashchange', e => {
                 document.querySelector('body div.content').innerHTML = res;
 
                 //scroll to the top of the page
-                document.body.scrollTo(0, 0);
+                window.scrollTo(0, 0);
 
                 //reload all the potential scripts from the retrieved page.
                 document.querySelector('body div.content').reloadScripts();
@@ -256,3 +256,16 @@ HTMLElement.prototype.reloadScripts = function() {
         script.parentNode.replaceChild(replacement, script);
     })
 }
+
+// OFFLINE SUPPORT
+    // Register the service worker.
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/service-worker-offline.js').then(registration => {
+        console.log('ServiceWorker registered, scope: ', registration.scope);
+    }).catch(err => {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+
+    //add event listeners.
+    window.addEventListener('online',  e => document.querySelector('html').setAttribute('offline', 'false'));
+    window.addEventListener('offline', e => document.querySelector('html').setAttribute('offline', 'true'));
+    document.querySelector('html').setAttribute('offline', (!navigator.onLine).toString());
