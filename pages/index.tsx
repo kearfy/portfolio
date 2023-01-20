@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 import MeSummer from '../public/me-summer.webp';
@@ -26,13 +26,22 @@ import useScrollObserver from '../lib/useScrollObserver';
 
 export default function Home() {
     const sectionCount = 4;
-    const { activeSection, setActiveSection } = useScrollObserver();
+    const { activeSection, setActiveSection, hasScrolled } =
+        useScrollObserver();
+    const [maybeInviteToScroll, setMaybeInviteToScroll] = useState(false);
+    const inviteToScroll = maybeInviteToScroll && !hasScrolled;
+
+    useEffect(() => {
+        setTimeout(() => {
+            setMaybeInviteToScroll(true);
+        }, 3000);
+    });
 
     return (
         <div className="w-screen h-screen">
             <Head />
             <div className="flex justify-between">
-                <div className="w-full">
+                <div>
                     <div className="h-screen snap-center flex flex-col justify-center items-end gap-16 px-52 text-8xl">
                         <div className="flex gap-24">
                             <p>Hiya!</p>
@@ -285,6 +294,20 @@ export default function Home() {
                     <Sidebar
                         {...{ sectionCount, activeSection, setActiveSection }}
                     />
+                </div>
+
+                <div
+                    className={`fixed bottom-0 w-full flex justify-center pointer-events-none transition-all duration-250 ${
+                        inviteToScroll ? 'mb-16 opacity-100' : 'mb-0 opacity-0'
+                    }`}
+                >
+                    <div className="bg-zinc-800 rounded-xl flex items-center gap-4 py-4 pl-5 pr-7 text-xl">
+                        <p className="text-3xl">👇</p>
+                        <p>
+                            Scroll down to check my work experience and learn
+                            more about me!
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
