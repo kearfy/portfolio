@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 import MeSummer from '../public/me-summer.webp';
@@ -22,17 +22,18 @@ import ExperienceCard, {
 import Link from 'next/link';
 import Quality from '../components/Quality';
 import SocialCard from '../components/SocialCard';
+import useScrollObserver from '../lib/useScrollObserver';
 
 export default function Home() {
-    const sectionCount = 3;
-    const [activeSection, setActiveSection] = useState(0);
+    const sectionCount = 4;
+    const { activeSection, setActiveSection } = useScrollObserver();
 
     return (
-        <div className="w-screen h-screen bg-zinc-900 text-white font-poppins">
+        <div className="w-screen h-screen">
             <Head />
             <div className="flex justify-between">
-                <div className="h-screen w-full overflow-scroll scrollbar-hide snap-y">
-                    <div className="h-screen snap-center flex flex-col justify-center items-end gap-16 px-16 text-8xl">
+                <div className="w-full">
+                    <div className="h-screen snap-center flex flex-col justify-center items-end gap-16 px-52 text-8xl">
                         <div className="flex gap-24">
                             <p>Hiya!</p>
                             <p>👋</p>
@@ -56,7 +57,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="h-screen snap-center flex items-center">
-                        <div className="pr-16 w-full pl-52">
+                        <div className="w-full px-52">
                             <h2 className="text-5xl mb-16">Experiences ✨</h2>
                             <div className="flex gap-24">
                                 <div className="flex flex-col gap-12 w-full">
@@ -159,7 +160,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="h-screen snap-center flex items-center">
-                        <div className="pr-16 pl-52 w-full flex gap-96 items-center">
+                        <div className="px-52 w-full flex gap-96 items-center">
                             <div>
                                 <h2 className="text-5xl mb-16">
                                     A little bit about me ✌️
@@ -201,7 +202,7 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-16 pr-36 items-center">
+                            <div className="flex flex-col gap-16 pr-28 items-center">
                                 <Image
                                     src={MeWinter}
                                     alt="Micha"
@@ -232,7 +233,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="h-screen snap-center flex flex-col justify-center items-center">
+                    <div className="h-screen snap-center flex flex-col justify-center items-center px-52">
                         <h2 className="text-6xl mb-24">Interested? ☎️</h2>
                         <div className="flex gap-16">
                             <div className="flex flex-col gap-10">
@@ -280,9 +281,11 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <Sidebar
-                    {...{ sectionCount, activeSection, setActiveSection }}
-                />
+                <div className="fixed top-0 right-0">
+                    <Sidebar
+                        {...{ sectionCount, activeSection, setActiveSection }}
+                    />
+                </div>
             </div>
         </div>
     );
