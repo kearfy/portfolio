@@ -11,12 +11,17 @@ import LogoPbcms from '../public/logo-pbcms.png';
 import LogoKards from '../public/logo-kards.png';
 import LogoPlayrbase from '../public/logo-playrbase.png';
 import LogoGithub from '../public/logo-github.png';
+import LogoDiscord from '../public/logo-discord.webp';
+import LogoInstagram from '../public/logo-instagram.webp';
+import LogoLinkedin from '../public/logo-linkedin.png';
+import LogoTwitter from '../public/logo-twitter.png';
 import Image from 'next/image';
 import ExperienceCard, {
     SmallExperienceCard,
 } from '../components/ExperienceCard';
 import Link from 'next/link';
 import Quality from '../components/Quality';
+import SocialCard from '../components/SocialCard';
 
 export default function Home() {
     const sectionCount = 3;
@@ -223,6 +228,53 @@ export default function Home() {
                                         emoji="🎶"
                                         quality="And to make music"
                                     />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="h-screen snap-center flex flex-col justify-center items-center">
+                        <h2 className="text-6xl mb-24">Interested? ☎️</h2>
+                        <div className="flex gap-16">
+                            <div className="flex flex-col gap-10">
+                                <SocialCard
+                                    logo={LogoDiscord}
+                                    platform="Discord"
+                                    nameOnPlatform="@Micha#1000"
+                                />
+                                <SocialCard
+                                    logo={LogoLinkedin}
+                                    platform="LinkedIn"
+                                    nameOnPlatform="Micha de Vries"
+                                    href="https://www.linkedin.com/in/micha-de-vries"
+                                />
+                                <SocialCard
+                                    logo={LogoInstagram}
+                                    platform="Instagram"
+                                    nameOnPlatform="Kearfy"
+                                    href="https://www.instagram.com/kearfy"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-10">
+                                <SocialCard
+                                    logo={LogoTwitter}
+                                    platform="Twitter"
+                                    nameOnPlatform="@Kearfy"
+                                    href="https://www.twitter.com/kearfy"
+                                />
+                                <SocialCard
+                                    logo={LogoGithub}
+                                    platform="GitHub"
+                                    nameOnPlatform="Kearfy"
+                                    href="https://www.github.com/kearfy"
+                                />
+                                <div className="h-24 text-xl flex flex-col justify-center gap-2 items-center">
+                                    <p>Or send me an email!</p>
+                                    <Link
+                                        href="mailto:micha@devrie.sh"
+                                        className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-purple-600"
+                                    >
+                                        micha@devrie.sh
+                                    </Link>
                                 </div>
                             </div>
                         </div>
