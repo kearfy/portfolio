@@ -17,7 +17,7 @@ export default function Head({
             </title>
 
             <meta name="application-name" content="Micha de Vries" />
-            <link rel="apple-touch-icon" href="/icon.png" />
+            <link rel="apple-touch-icon" href="/favicon.png" />
 
             <meta name="charset" content="UTF-8" />
             <meta
@@ -40,7 +40,7 @@ export default function Head({
             <meta
                 name="og:image"
                 itemProp="image primaryImageOfPage"
-                content="https://raw.githubusercontent.com/surrealdb/surrealdb/main/img/icon.png"
+                content="https://new.devrie.sh/MeIcon.png"
             />
             <meta
                 name="og:site_name"
