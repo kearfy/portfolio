@@ -345,9 +345,7 @@ export default function Home() {
                     </Section>
                 </div>
                 <div className="fixed top-0 right-0 hidden 2xl:block">
-                    <Sidebar
-                        {...{ sectionCount }}
-                    />
+                    <Sidebar {...{ sectionCount }} />
                 </div>
 
                 <div
