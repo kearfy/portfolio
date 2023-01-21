@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import React, { ReactNode } from 'react';
 
 export default function ExperienceCard({
@@ -6,14 +7,20 @@ export default function ExperienceCard({
     subtitle,
     children,
     logo,
+    href,
 }: {
     title: string;
     subtitle?: string;
     children: ReactNode;
     logo: StaticImageData;
+    href?: string;
 }) {
-    return (
-        <div className="bg-zinc-800 py-5 pl-6 pr-8 rounded-2xl flex flex-col sm:flex-row gap-4 sm:gap-8 shadow-xl">
+    const CardContent = () => (
+        <div
+            className={`bg-zinc-800 py-5 pl-6 pr-8 rounded-2xl flex flex-col sm:flex-row gap-4 sm:gap-8 shadow-xl transition-colors duration-100 ${
+                href ? 'hover:bg-zinc-700' : ''
+            }`}
+        >
             <Image
                 src={logo}
                 alt={`${title} logo`}
@@ -32,6 +39,14 @@ export default function ExperienceCard({
             </div>
         </div>
     );
+
+    return href ? (
+        <Link href={href} target="_blank" className="w-full">
+            <CardContent />
+        </Link>
+    ) : (
+        <CardContent />
+    );
 }
 
 export function SmallExperienceCard({
@@ -39,13 +54,15 @@ export function SmallExperienceCard({
     children,
     logo,
     className,
+    href,
 }: {
     title: string;
     children: ReactNode;
     logo: StaticImageData;
     className?: string;
+    href?: string;
 }) {
-    return (
+    const CardContent = () => (
         <div
             className={
                 'bg-zinc-800 py-4 md:py-3 px-4 rounded-2xl flex flex-col md:flex-row gap-3 md:gap-6 shadow-xl ' +
@@ -62,5 +79,13 @@ export function SmallExperienceCard({
                 <p className="text-zinc-200">{children}</p>
             </div>
         </div>
+    );
+
+    return href ? (
+        <Link href={href} target="_blank" className="w-full">
+            <CardContent />
+        </Link>
+    ) : (
+        <CardContent />
     );
 }

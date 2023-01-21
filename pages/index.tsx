@@ -123,6 +123,7 @@ export default function Home() {
                                         title="Flow your Money"
                                         subtitle="Full time"
                                         logo={LogoFlow}
+                                        href="https://flowyour.money"
                                     >
                                         I&apos;m working at flow with great
                                         pleasure and I am gaining a lot of new
@@ -133,6 +134,7 @@ export default function Home() {
                                     <ExperienceCard
                                         title="The Open Source Company"
                                         logo={LogoTosc}
+                                        href="https://theopensource.company"
                                     >
                                         I really like open source and always try
                                         to contribute to open source projects. I
@@ -144,6 +146,7 @@ export default function Home() {
                                         title="Atlas College"
                                         subtitle="Teaching assistant"
                                         logo={LogoOsg}
+                                        href="https://www.osgwestfriesland.nl/"
                                     >
                                         At the end of 2021 I got the offer to
                                         stand in front of the classroom for
@@ -172,6 +175,7 @@ export default function Home() {
                                                 title="Kards Social"
                                                 logo={LogoKards}
                                                 className="sm:w-1/2"
+                                                href="https://github.com/theopensource-company/kards-social"
                                             >
                                                 Open source social media app
                                             </SmallExperienceCard>
@@ -179,6 +183,7 @@ export default function Home() {
                                                 title="PBCMS"
                                                 logo={LogoPbcms}
                                                 className="sm:w-1/2"
+                                                href="https://github.com/pbcms/pbcms"
                                             >
                                                 Bare bones and extendable PHP
                                                 CMS
@@ -189,6 +194,7 @@ export default function Home() {
                                                 title="Playrbase"
                                                 logo={LogoPlayrbase}
                                                 className="sm:w-1/2"
+                                                href="https://github.com/theopensource-company/playrbase"
                                             >
                                                 Event and player management
                                             </SmallExperienceCard>
@@ -196,6 +202,7 @@ export default function Home() {
                                                 title="Kick Assist"
                                                 logo={LogoScooter}
                                                 className="sm:w-1/2"
+                                                href="https://github.com/kearfy/Xiaomi-Scooter-Motion-Control"
                                             >
                                                 Legally drive e-scooters in the
                                                 Netherlands!
