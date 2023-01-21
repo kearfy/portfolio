@@ -40,7 +40,7 @@ export default function Head({
             <meta
                 name="og:image"
                 itemProp="image primaryImageOfPage"
-                content="https://new.devrie.sh/MeIcon.png"
+                content="https://new.devrie.sh/MeSummer.png"
             />
             <meta
                 name="og:site_name"
