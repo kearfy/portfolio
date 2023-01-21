@@ -15,18 +15,22 @@ export default function SocialCard({
 }) {
     const CardContent = () => (
         <div
-            className={`flex gap-7 items-center pl-4 pr-8 py-3.5 bg-zinc-800 rounded-lg w-full transition-colors duration-100 ${
+            className={`flex gap-5 lg:gap-7 items-center pl-4 pr-8 py-3.5 bg-zinc-800 rounded-lg w-full transition-colors duration-100 ${
                 href ? 'hover:bg-zinc-700' : ''
             }`}
         >
             <Image
                 src={logo}
                 alt={`${platform} logo`}
-                className="w-20 h-20 rounded-lg"
+                className="w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded sm:rounded-lg"
             />
             <div className="mb-1 min-w-[200px]">
-                <p className="text-lg text-zinc-400">{platform}</p>
-                <p className="text-2xl">{nameOnPlatform}</p>
+                <p className="text-sm sm:text-md lg:text-lg text-zinc-400">
+                    {platform}
+                </p>
+                <p className="text-md sm:text-xl lg:text-2xl">
+                    {nameOnPlatform}
+                </p>
             </div>
         </div>
     );

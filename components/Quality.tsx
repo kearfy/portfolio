@@ -10,11 +10,13 @@ export default function Quality({
     bigger?: boolean;
 }) {
     return (
-        <div className="flex gap-5">
-            <p className="text-4xl">{emoji}</p>
+        <div className="flex gap-3 sm:gap-5">
+            <p className="text-2xl sm:text-4xl">{emoji}</p>
             <p
                 className={`whitespace-nowrap ${
-                    bigger ? 'text-3xl text-zinc-100' : 'text-2xl text-zinc-300'
+                    bigger
+                        ? 'text-2xl sm:text-3xl text-zinc-100'
+                        : 'text-lg sm:text-2xl text-zinc-300'
                 }`}
             >
                 {quality}

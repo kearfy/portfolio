@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 import MeSummer from '../public/me-summer.webp';
@@ -37,38 +37,76 @@ export default function Home() {
         }, 3000);
     });
 
+    const Section = ({
+        children,
+        className,
+    }: {
+        children: ReactNode;
+        className?: string;
+    }) => (
+        <div
+            className={`2xl:h-screen py-24 2xl:py-0 sm:snap-start 2xl:snap-center px-4 sm:px-12 md:px-18 lg:px-28 xl:px-44 2xl:px-52 ${
+                className ?? ''
+            }`}
+        >
+            {children}
+        </div>
+    );
+
     return (
         <div className="w-screen h-screen">
             <Head />
             <div className="flex justify-between">
-                <div>
-                    <div className="h-screen snap-center flex flex-col justify-center items-end gap-16 px-52 text-8xl">
-                        <div className="flex gap-24">
-                            <p>Hiya!</p>
-                            <p>👋</p>
-                        </div>
-                        <div className="flex gap-24">
-                            <p>
-                                I&apos;m{' '}
-                                <span className="text-transparent text-8xl bg-clip-text bg-gradient-to-r from-sky-300 to-purple-600">
-                                    Micha
-                                </span>
-                            </p>
-                            <Image
-                                src={MeSummer}
-                                alt="Micha"
-                                className="rounded-full h-24 w-24"
-                            />
-                        </div>
-                        <div className="flex gap-24">
-                            <p>I build amazing products</p>
-                            <p>👨🏼‍💻</p>
-                        </div>
-                    </div>
-                    <div className="h-screen snap-center flex items-center">
-                        <div className="w-full px-52">
-                            <h2 className="text-5xl mb-16">Experiences ✨</h2>
-                            <div className="flex gap-24">
+                <div className="w-full">
+                    <Section className="h-screen flex flex-col justify-center items-center md:items-start xl:items-end gap-24 md:gap-16 text-4xl text-center md:text-left md:text-5xl xl:text-6xl 2xl:text-7xl">
+                        {(() => {
+                            const Row = ({
+                                children,
+                            }: {
+                                children: ReactNode;
+                            }) => (
+                                <div className="flex flex-col md:flex-row xl:flex-row-reverse items-center gap-8 xl:gap-12 2xl:gap-20">
+                                    {children}
+                                </div>
+                            );
+
+                            return (
+                                <>
+                                    <Row>
+                                        <p className="text-6xl md:text-5xl xl:text-6xl 2xl:text-7xl xl:mr-2">
+                                            👋
+                                        </p>
+                                        <p>Hiya!</p>
+                                    </Row>
+                                    <Row>
+                                        <Image
+                                            src={MeSummer}
+                                            alt="Micha"
+                                            className="rounded-full w-24 h-24 md:w-12 md:h-12 xl:h-16 xl:w-16 2xl:h-20 2xl:w-20"
+                                        />
+                                        <p>
+                                            I&apos;m{' '}
+                                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-purple-600">
+                                                Micha
+                                            </span>
+                                        </p>
+                                    </Row>
+                                    <Row>
+                                        <p className="text-6xl md:text-5xl xl:text-6xl 2xl:text-7xl xl:mr-2">
+                                            👨🏼‍💻
+                                        </p>
+                                        <p>I build amazing products</p>
+                                    </Row>
+                                </>
+                            );
+                        })()}
+                    </Section>
+                    <Section className="flex items-center h-fit">
+                        <div className="w-full">
+                            <h2 className="text-3xl sm:text-5xl mb-16">
+                                Experiences ✨
+                            </h2>
+                            <div className="flex gap-12 flex-col 2xl:flex-row 2xl:gap-24">
                                 <div className="flex flex-col gap-12 w-full">
                                     <ExperienceCard
                                         title="Flow your Money"
@@ -117,43 +155,46 @@ export default function Home() {
                                         about their needs from a business
                                         perspective.
                                     </ExperienceCard>
-                                    <div className="flex gap-12">
-                                        <SmallExperienceCard
-                                            title="Kards Social"
-                                            logo={LogoKards}
-                                            className="w-1/2"
-                                        >
-                                            Open source social media app
-                                        </SmallExperienceCard>
-                                        <SmallExperienceCard
-                                            title="PBCMS"
-                                            logo={LogoPbcms}
-                                            className="w-1/2"
-                                        >
-                                            Bare bones and extendable PHP CMS
-                                        </SmallExperienceCard>
-                                    </div>
-                                    <div className="flex gap-12">
-                                        <SmallExperienceCard
-                                            title="Playrbase"
-                                            logo={LogoPlayrbase}
-                                            className="w-1/2"
-                                        >
-                                            Event and player management
-                                        </SmallExperienceCard>
-                                        <SmallExperienceCard
-                                            title="Kick Assist"
-                                            logo={LogoScooter}
-                                            className="w-1/2"
-                                        >
-                                            Legally drive e-scooters in the
-                                            Netherlands!
-                                        </SmallExperienceCard>
+                                    <div className="flex flex-col gap-6 sm:gap-12">
+                                        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
+                                            <SmallExperienceCard
+                                                title="Kards Social"
+                                                logo={LogoKards}
+                                                className="sm:w-1/2"
+                                            >
+                                                Open source social media app
+                                            </SmallExperienceCard>
+                                            <SmallExperienceCard
+                                                title="PBCMS"
+                                                logo={LogoPbcms}
+                                                className="sm:w-1/2"
+                                            >
+                                                Bare bones and extendable PHP
+                                                CMS
+                                            </SmallExperienceCard>
+                                        </div>
+                                        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
+                                            <SmallExperienceCard
+                                                title="Playrbase"
+                                                logo={LogoPlayrbase}
+                                                className="sm:w-1/2"
+                                            >
+                                                Event and player management
+                                            </SmallExperienceCard>
+                                            <SmallExperienceCard
+                                                title="Kick Assist"
+                                                logo={LogoScooter}
+                                                className="sm:w-1/2"
+                                            >
+                                                Legally drive e-scooters in the
+                                                Netherlands!
+                                            </SmallExperienceCard>
+                                        </div>
                                     </div>
                                     <Link
                                         href="https://github.com/kearfy"
                                         target="_blank"
-                                        className="flex items-center justify-center mt-3 gap-6 hover:underline"
+                                        className="flex flex-col sm:flex-row items-center justify-center gap-6 hover:underline"
                                     >
                                         <Image
                                             src={LogoGithub}
@@ -167,14 +208,14 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="h-screen snap-center flex items-center">
-                        <div className="px-52 w-full flex gap-96 items-center">
-                            <div>
-                                <h2 className="text-5xl mb-16">
+                    </Section>
+                    <Section className="flex items-center">
+                        <div className="w-full flex flex-col xl:flex-row gap-24 xl:gap-16 justify-between items-center">
+                            <div className="max-w-3xl xl:max-w-2xl">
+                                <h2 className="text-3xl sm:text-5xl mb-16">
                                     A little bit about me ✌️
                                 </h2>
-                                <div className="flex flex-col gap-8 text-2xl text-zinc-200">
+                                <div className="flex flex-col gap-8 text-lg sm:text-2xl text-zinc-200">
                                     <p>
                                         I’m a software engineer based in the
                                         Netherlands. Controversial to most
@@ -211,13 +252,13 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-16 pr-28 items-center">
+                            <div className="flex flex-col sm:flex-row-reverse justify-between max-w-3xl xl:flex-col gap-16 xl:pl-12 items-center w-full xl:w-fit flex-grow 2xl:flex-grow-0 2xl:pr-16">
                                 <Image
                                     src={MeWinter}
                                     alt="Micha"
                                     className="rounded-full w-48"
                                 />
-                                <div className="flex flex-col gap-2 mb-24">
+                                <div className="flex flex-col gap-2 xl:mb-24">
                                     <Quality
                                         emoji="📙"
                                         quality="Micha de Vries"
@@ -241,11 +282,13 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="h-screen snap-center flex flex-col justify-center items-center px-52">
-                        <h2 className="text-6xl mb-24">Interested? ☎️</h2>
-                        <div className="flex gap-16">
-                            <div className="flex flex-col gap-10">
+                    </Section>
+                    <Section className="flex flex-col justify-center items-center">
+                        <h2 className="text-3xl sm:text-5xl mb-12 sm:mb-24">
+                            Interested? ☎️
+                        </h2>
+                        <div className="flex flex-col sm:flex-row gap-8 lg:gap-16 mx-2 lg:mx-0">
+                            <div className="flex flex-col gap-6 sm:gap-10">
                                 <SocialCard
                                     logo={LogoDiscord}
                                     platform="Discord"
@@ -264,7 +307,7 @@ export default function Home() {
                                     href="https://www.instagram.com/kearfy"
                                 />
                             </div>
-                            <div className="flex flex-col gap-10">
+                            <div className="flex flex-col gap-6 sm:gap-10">
                                 <SocialCard
                                     logo={LogoTwitter}
                                     platform="Twitter"
@@ -288,9 +331,9 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Section>
                 </div>
-                <div className="fixed top-0 right-0">
+                <div className="fixed top-0 right-0 hidden 2xl:block">
                     <Sidebar
                         {...{ sectionCount, activeSection, setActiveSection }}
                     />
@@ -298,11 +341,13 @@ export default function Home() {
 
                 <div
                     className={`fixed bottom-0 w-full flex justify-center pointer-events-none transition-all duration-250 ${
-                        inviteToScroll ? 'mb-16 opacity-100' : 'mb-0 opacity-0'
+                        inviteToScroll
+                            ? 'mb-8 sm:mb-16 opacity-100'
+                            : 'mb-0 opacity-0'
                     }`}
                 >
-                    <div className="bg-zinc-800 rounded-xl flex items-center gap-4 py-4 pl-5 pr-7 text-xl">
-                        <p className="text-3xl">👇</p>
+                    <div className="bg-zinc-800 rounded-xl flex items-center gap-4 py-4 pl-5 pr-7 text-base sm:text-xl mx-8 shadow-xl">
+                        <p className="text-2xl sm:text-3xl">👇</p>
                         <p>
                             Scroll down to check my work experience and learn
                             more about me!

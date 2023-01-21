@@ -11,7 +11,7 @@ export default function Sidebar({
     setActiveSection: (index: number) => unknown;
 }) {
     return (
-        <div className="w-36 h-screen flex flex-col justify-center items-center gap-12">
+        <div className="w-24 lg:w-36 h-screen flex flex-col justify-center items-center gap-8 lg:gap-12">
             {Array(sectionCount)
                 .fill(0)
                 .map((_, i) => (
