@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 import MeSummer from '../public/me-summer.webp';
@@ -22,20 +22,31 @@ import ExperienceCard, {
 import Link from 'next/link';
 import Quality from '../components/Quality';
 import SocialCard from '../components/SocialCard';
-import useScrollObserver from '../lib/useScrollObserver';
 
 export default function Home() {
     const sectionCount = 4;
-    const { activeSection, setActiveSection, hasScrolled } =
-        useScrollObserver();
     const [maybeInviteToScroll, setMaybeInviteToScroll] = useState(false);
+    const [hasScrolled, setHasScrolled] = useState(false);
     const inviteToScroll = maybeInviteToScroll && !hasScrolled;
 
+    const observer = useCallback(() => {
+        if (!hasScrolled && window.scrollY > 0) {
+            setHasScrolled(true);
+        }
+    }, [hasScrolled]);
+
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setMaybeInviteToScroll(true);
         }, 3000);
-    });
+
+        window.addEventListener('scroll', observer);
+
+        return () => {
+            clearTimeout(timeout);
+            window.removeEventListener('scroll', observer);
+        };
+    }, [setMaybeInviteToScroll, observer]);
 
     const Section = ({
         children,
@@ -65,7 +76,7 @@ export default function Home() {
                             }: {
                                 children: ReactNode;
                             }) => (
-                                <div className="flex flex-col md:flex-row xl:flex-row-reverse items-center gap-8 xl:gap-12 2xl:gap-20">
+                                <div className="flex flex-col md:flex-row xl:flex-row-reverse items-center gap-4 sm:gap-8 xl:gap-12 2xl:gap-20">
                                     {children}
                                 </div>
                             );
@@ -73,7 +84,7 @@ export default function Home() {
                             return (
                                 <>
                                     <Row>
-                                        <p className="text-6xl md:text-5xl xl:text-6xl 2xl:text-7xl xl:mr-2">
+                                        <p className="text-4xl sm:text-6xl md:text-5xl xl:text-6xl 2xl:text-7xl xl:mr-2">
                                             👋
                                         </p>
                                         <p>Hiya!</p>
@@ -335,7 +346,7 @@ export default function Home() {
                 </div>
                 <div className="fixed top-0 right-0 hidden 2xl:block">
                     <Sidebar
-                        {...{ sectionCount, activeSection, setActiveSection }}
+                        {...{ sectionCount }}
                     />
                 </div>
 

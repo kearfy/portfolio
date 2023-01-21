@@ -1,15 +1,9 @@
 import React from 'react';
 import SidebarItem from './SidebarItem';
+import useScrollObserver from '../../lib/useScrollObserver';
 
-export default function Sidebar({
-    sectionCount,
-    activeSection,
-    setActiveSection,
-}: {
-    sectionCount: number;
-    activeSection: number;
-    setActiveSection: (index: number) => unknown;
-}) {
+export default function Sidebar({ sectionCount }: { sectionCount: number }) {
+    const { activeSection, setActiveSection } = useScrollObserver();
     return (
         <div className="w-24 lg:w-36 h-screen flex flex-col justify-center items-center gap-8 lg:gap-12">
             {Array(sectionCount)
