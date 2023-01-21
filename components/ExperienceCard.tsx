@@ -64,10 +64,9 @@ export function SmallExperienceCard({
 }) {
     const CardContent = () => (
         <div
-            className={
-                'bg-zinc-800 py-4 md:py-3 px-4 rounded-2xl flex flex-col md:flex-row gap-3 md:gap-6 shadow-xl ' +
-                    className ?? ''
-            }
+            className={`bg-zinc-800 py-4 md:py-3 px-4 rounded-2xl flex flex-col md:flex-row gap-3 md:gap-6 shadow-xl ${
+                href ? 'hover:bg-zinc-700' : ''
+            }`}
         >
             <Image
                 src={logo}
@@ -82,7 +81,11 @@ export function SmallExperienceCard({
     );
 
     return href ? (
-        <Link href={href} target="_blank" className="w-full">
+        <Link
+            href={href}
+            target="_blank"
+            className={'h-full ' + className ?? ''}
+        >
             <CardContent />
         </Link>
     ) : (

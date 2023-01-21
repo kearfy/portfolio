@@ -180,6 +180,16 @@ export default function Home() {
                                                 Open source social media app
                                             </SmallExperienceCard>
                                             <SmallExperienceCard
+                                                title="Playrbase"
+                                                logo={LogoPlayrbase}
+                                                className="sm:w-1/2"
+                                                href="https://github.com/theopensource-company/playrbase"
+                                            >
+                                                Event and player management
+                                            </SmallExperienceCard>
+                                        </div>
+                                        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
+                                            <SmallExperienceCard
                                                 title="PBCMS"
                                                 logo={LogoPbcms}
                                                 className="sm:w-1/2"
@@ -187,16 +197,6 @@ export default function Home() {
                                             >
                                                 Bare bones and extendable PHP
                                                 CMS
-                                            </SmallExperienceCard>
-                                        </div>
-                                        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
-                                            <SmallExperienceCard
-                                                title="Playrbase"
-                                                logo={LogoPlayrbase}
-                                                className="sm:w-1/2"
-                                                href="https://github.com/theopensource-company/playrbase"
-                                            >
-                                                Event and player management
                                             </SmallExperienceCard>
                                             <SmallExperienceCard
                                                 title="Kick Assist"
