@@ -15,6 +15,7 @@ import LogoDiscord from '../public/logo-discord.webp';
 import LogoInstagram from '../public/logo-instagram.webp';
 import LogoLinkedin from '../public/logo-linkedin.png';
 import LogoTwitter from '../public/logo-twitter.png';
+import LogoBuyMeACoffee from '../public/logo-buymeacoffee.svg';
 import Image from 'next/image';
 import ExperienceCard, {
     SmallExperienceCard,
@@ -338,15 +339,23 @@ export default function Home() {
                                     nameOnPlatform="Kearfy"
                                     href="https://www.github.com/kearfy"
                                 />
-                                <div className="h-24 text-xl flex flex-col justify-center gap-2 items-center">
-                                    <p>Or send me an email!</p>
-                                    <Link
-                                        href="mailto:micha@devrie.sh"
-                                        className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-purple-600"
-                                    >
-                                        micha@devrie.sh
-                                    </Link>
-                                </div>
+                                <SocialCard
+                                    logo={LogoBuyMeACoffee}
+                                    platform="Buy Me A Coffee"
+                                    nameOnPlatform="Kearfy"
+                                    href="https://www.buymeacoffee.com/kearfy"
+                                />
+                            </div>
+                        </div>
+                        <div className="pt-8">
+                            <div className="h-24 text-xl flex flex-col justify-center gap-2 items-center">
+                                <p>Or send me an email!</p>
+                                <Link
+                                    href="mailto:micha@devrie.sh"
+                                    className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-purple-600"
+                                >
+                                    micha@devrie.sh
+                                </Link>
                             </div>
                         </div>
                     </Section>
